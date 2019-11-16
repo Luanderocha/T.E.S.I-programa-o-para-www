@@ -55,71 +55,79 @@
                 Texto: <input type="text" id="textoUpper" onkeyup="modificarLetras()">
             </div>
         </li>
-        <li>Implemente um mecanismo de validação que verifica se um campo de texto contém um número e este número esta contido no intervalo entre 0 e 99. Se a validação falhar, criar uma div com as seguintes mensagens "Campo deve ser numérico" ou "O valor
+        <li id="validacao">Implemente um mecanismo de validação que verifica se um campo de texto contém um número e este número esta contido no intervalo entre 0 e 99. Se a validação falhar, criar uma div com as seguintes mensagens "Campo deve ser numérico" ou "O valor
             deve estar contido no intervalo entre 0 e 99", respectivamente. Não esqueça de remover a div se o valor for valido.
             <div>
-                Campo numérico: <input type="text"> <button type="button">Validar</button>
+                Campo numérico: <input type="text" id="campoNumerico"> <button type="button" onclick="validarCampoNumerico()">Validar</button>
             </div>
             <!-- o div deve aparecer aqui -->
         </li>
-        <li>Construa um script que adiciona uma div com um número sequencial (1, 2, 3, 4, ...) a cada vez que um botão é pressionado. <button type="button">Gerar</button>
+        <li id="novasDivs">Construa um script que adiciona uma div com um número sequencial (1, 2, 3, 4, ...) a cada vez que um botão é pressionado. <button type="button" onclick="gerarDivs()">Gerar</button>
             <!-- as divs devem aparecer aqui -->
         </li>
-        <li>Escreva um script que subtitui um número em uma div pelo valor incrementado de um a cada vez que um botão é pressionado. <button type="button">Incrementar</button>
-            <div>0</div>
+
+        <li>Escreva um script que subtitui um número em uma div pelo valor incrementado de um a cada vez que um botão é pressionado. <button type="button" onclick="incrementar()">Incrementar</button>
+            <div id='incremento'>0</div>
         </li>
+
         <li>Faça um script que altera a imagem abaixo quando o mouse passa sobre a mesma (não colocar imagens de concorrentes }:- P).
-            <div><img src="https://www.unifacisa.edu.br/assets/imgs/logo.svg"></div>
+            <div><img onmouseover="modificarImagem()" id="imagem" src="https://www.unifacisa.edu.br/assets/imgs/logo.svg"></div>
         </li>
-        <li>Implemente um script que aumenta a fonte do texto contido em uma div quando o link com o palavra "Zoom in" for pressionado e faz o contrário quando for pressionado "Zoom out". <a href="#">Zoom in</a> <a href="#">Zoom out</a>
-            <div>Texto a ser redimensionado</div>
+
+        <li>Implemente um script que aumenta a fonte do texto contido em uma div quando o link com o palavra "Zoom in" for pressionado e faz o contrário quando for pressionado "Zoom out". <a href="#redimensionado" onclick="aumentar()">Zoom in</a> <a href="#redimensionado"
+                onclick="diminuir()">Zoom out</a>
+            <div id="redimensionado">Texto a ser redimensionado</div>
         </li>
         <li>Construa um script que altera a cor do fundo para vermelho de um campo de texto quando o usuário edita o campo e o deixa sem texto.
             <div>
-                Texto: <input type="text">
+                Texto: <input type="text" id="ValidaCampoVazio" onBlur="auterarCorCampo()">
             </div>
         </li>
         <li>Faça um script que altera a cor de fundo para verde limão de uma div que contém uma área de texto e mesma ganha foco
-            <div>
-                Texto: <input type="text">
+            <div id="modificaCorDiv">
+                Texto: <input type="text" onFocus="auterarCorDiv()">
             </div>
         </li>
 
         <li>Implemente um script que permite alterar a cor do texto da div com a cor escolhida de acordo com uma seleção em uma lista de cores.
-            <select>
-		  <option>Vermelho</option>
-		  <option>Verde</option>
-		  <option>Azul</option>
+            <select id="selecionaOpcao" onClick="selecionarCor()">
+		  <option value="vermelho">Vermelho</option>
+		  <option value="verde">Verde</option>
+		  <option value="azul">Azul</option>
 	  </select>
-            <div>
+            <div id="selecionarCor">
                 Essa div deve mudar de cor
             </div>
         </li>
+
         <li>Construa um script que imprime o tamanho da tela (largura e altura) após a página carregar e atualiza este valor a cada vez a tela é redimensionada.
-            <div>
+            <div id="redimenciona">
                 Largura: <br> Altura:
             </div>
         </li>
+
         <li>Faça um script que verifica se um formulário com três campos (um campo de texto, um grupo de radio com três opções e um checkbox) está completamente preenchido, se estiver submete os dados (pode ser para página não existente), caso contrário,
             cria mensagem de erro junto ao(s) campo(s) que necessita(m) ser preenchido(s).
             <div>
-                <form>
-                    Qual o seu nome? <input type="text"><br> Qual a linguagem de programação que tem mais experiência? <br>
+                <form id="formulario">
+                    Qual o seu nome? <input type="text" name="campoNome"><span id="validaNome"></span><br> Qual a linguagem de programação que tem mais experiência?<span id="validaRadio"></span><br>
                     <input type="radio" name="ling_prog">Python<br>
                     <input type="radio" name="ling_prog">Java<br>
-                    <input type="radio" name="ling_prog">Javascript<br> Sabe HTML? <input type="checkbox"><br>
-                    <input type="submit">
+                    <input type="radio" name="ling_prog">Javascript<br> Sabe HTML? <input type="checkbox" name="check"><span id="validaCheckbox"></span><br>
+                    <input type="button" onclick="validarForm()" value="Submeter">
                 </form>
             </div>
         </li>
-        <li>Construa um script que valida um texto contido em um campo de texto, verificando se o mesmo contém o caracter '@' apenas uma vez. Se isto ocorrer, deve criar uma div com mensagem de errro, caso contrário, cria div com mensagem de sucesso.
+        <li id="caractereEspecial">Construa um script que valida um texto contido em um campo de texto, verificando se o mesmo contém o caracter '@' apenas uma vez. Se isto ocorrer, deve criar uma div com mensagem de errro, caso contrário, cria div com mensagem de sucesso.
             <div>
-                Texto: <input type="text"> <button type="button">Validar</button>
+                Texto: <input type="text" id="validaCaractere"> <button type="button" onclick="validarCaractere()">Validar</button>
             </div>
         </li>
     </ol>
 
-    <script src="exercicio-javascript.js"></script>
+    <script src="exercicio-javascript.js">
+    </script>
+
 </body>
 
 </html>
